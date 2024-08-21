@@ -1,0 +1,9 @@
+export const ENV = {
+  CLICKUP_API_URL: process.env.CLICKUP_API_URL,
+  CLICKUP_SETTING_URL: process.env.CLICKUP_SETTING_URL,
+  GITHUB_API_URL: process.env.GITHUB_API_URL,
+  GITHUB_SETTING_URL: process.env.GITHUB_SETTING_URL,
+  GIST_ID: process.env.GIST_ID,
+  TIPS_PRERIOD: +process.env.TIPS_PRERIOD,
+  TIPS_DURATION: +process.env.TIPS_DURATION,
+};

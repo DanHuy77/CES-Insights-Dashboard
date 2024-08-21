@@ -1,0 +1,41 @@
+@import "../AgingWorkItemsChart/style.css";
+
+.selector-title {
+  margin-bottom: 10px;
+  font-size: larger;
+}
+
+.status-selector {
+  display: inline-flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.submit-btn {
+  padding-top: 15px;
+}
+
+.cycleTime-tasks {
+  border: 1px solid;
+  padding: 0;
+  margin-top: 4px;
+}
+
+.notice {
+  font-size: small;
+  color: red;
+}
+
+.cycleTime-popup {
+  background-color: white;
+  position: absolute;
+  top: 50px;
+  right: 55px;
+  box-shadow: 0 8px 16px 0 rgb(0 0 0 / 10%);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 270px;
+  z-index: 5;
+}

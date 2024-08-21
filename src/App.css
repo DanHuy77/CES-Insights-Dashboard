@@ -1,0 +1,19 @@
+#root {
+  width: 100%;
+  height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.rs-picker .rs-picker-toggle {
+  left: 0;
+}
+
+.rs-popover {
+  left: 20px !important;
+}
+
+.form-save-data{
+  margin-top: 20px;
+}

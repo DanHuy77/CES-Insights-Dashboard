@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="styles.css" rel="stylesheet" />
+    <link href="styles/toastify.css" rel="stylesheet" />
+  </head>
+  <body class="p-2">
+    <div class="min-w-[400px]">
+      <div
+        id="loader"
+        class="absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2 hidden"
+      >
+        <svg
+          aria-hidden="true"
+          class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-sky-600"
+          viewBox="0 0 100 101"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+            fill="currentColor"
+          />
+          <path
+            d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+            fill="currentFill"
+          />
+        </svg>
+      </div>
+      <div id="container">
+        <div
+          id="tabLabels"
+          class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700"
+        >
+          <ul id="tabList" class="flex flex-wrap -mb-px">
+            <li class="mr-2">
+              <button
+                id="taskInfoTab"
+                type="button"
+                data-tab="taskInfo"
+                class="inline-block p-1 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 pointer-events-none opacity-25"
+              >
+                Task Info
+              </button>
+            </li>
+            <li class="mr-2">
+              <button
+                id="settingTab"
+                type="button"
+                data-tab="setting"
+                class="inline-block p-1 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+              >
+                Setting
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div id="tabsContent" class="pt-2 min-h-[80px] flex justify-center">
+          <div
+            id="taskInfo"
+            class="w-full flex hidden justify-between items-center"
+          >
+            <div class="w-full">
+              <div id="foundCuTask" class="p-2 rounded-lg mb-1">
+                <label class="font-bold">Ticket in this tab</label>
+                <div class="flex items-center h-10">
+                  <p class="task-link">
+                    <a
+                      href="#"
+                      class="font-medium text-sky-600 underline dark:text-sky-500 hover:no-underline"
+                    >
+                    </a>
+                  </p>
+                  <p class="no-task hidden">No ticket found</p>
+                  <p class="wrong-ws-task hidden"></p>
+                  <button
+                    id="startButton"
+                    type="button"
+                    class="ml-auto text-white bg-white focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-full text-sm text-center inline-flex items-center hidden"
+                  >
+                    <svg
+                      class="w-10 h-10 fill-sky-600 hover:fill-sky-700"
+                      version="1.1"
+                      id="Layer_1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      viewBox="0 0 459 459"
+                      xml:space="preserve"
+                    >
+                      <g>
+                        <g>
+                          <path
+                            d="M229.5,0C102.751,0,0,102.751,0,229.5S102.751,459,229.5,459S459,356.249,459,229.5S356.249,0,229.5,0z M310.292,239.651
+                 l-111.764,76.084c-3.761,2.56-8.63,2.831-12.652,0.704c-4.022-2.128-6.538-6.305-6.538-10.855V153.416
+                 c0-4.55,2.516-8.727,6.538-10.855c4.022-2.127,8.891-1.857,12.652,0.704l111.764,76.084c3.359,2.287,5.37,6.087,5.37,10.151
+                 C315.662,233.564,313.652,237.364,310.292,239.651z"
+                          />
+                        </g>
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div
+                id="trackingCuTask"
+                class="bg-rose-100 p-2 rounded-lg mb-1 hidden"
+              >
+                <label class="font-bold">Tracking ticket</label>
+                <div class="flex items-center">
+                  <div>
+                    <p class="task-link">
+                      <a
+                        href="#"
+                        class="font-medium text-sky-600 underline dark:text-sky-500 hover:no-underline"
+                      >
+                      </a>
+                    </p>
+                    <div
+                      id="runningTaskTimer"
+                      class="text-xl font-bold text-rose-700 tracking-wide"
+                    ></div>
+                  </div>
+                  <button
+                    id="stopButton"
+                    type="button"
+                    class="ml-auto text-white bg-white focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-full text-sm text-center inline-flex items-center"
+                  >
+                    <svg
+                      class="w-10 h-10 fill-rose-600 hover:fill-rose-700"
+                      version="1.1"
+                      id="Capa_1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      viewBox="0 0 512 512"
+                      xml:space="preserve"
+                    >
+                      <path
+                        d="M256,0C114.617,0,0,114.617,0,256s114.617,256,256,256s256-114.617,256-256S397.383,0,256,0z M336,320
+             c0,8.836-7.156,16-16,16H192c-8.844,0-16-7.164-16-16V192c0-8.836,7.156-16,16-16h128c8.844,0,16,7.164,16,16V320z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="setting" class="w-full">
+            <div class="setting-block">
+              <label class="font-bold">Tips</label>
+              <div id="langContainer" tabindex="0" class="mt-2">
+                <label>Language</label>
+                <div class="mt-1 relative">
+                  <button
+                    id="langButton"
+                    data-dropdown-toggle="dropdownDefaultRadio"
+                    class="text-white bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded text-sm py-1 px-4 text-center inline-flex items-center"
+                    type="button"
+                  >
+                    Language: <span id="lang" class="ml-1 uppercase"></span>
+                    <svg
+                      class="w-4 h-4 ml-2"
+                      aria-hidden="true"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      ></path>
+                    </svg>
+                  </button>
+                  <div
+                    id="langDropdown"
+                    class="z-10 hidden absolute top-7 w-36 bg-white divide-y divide-gray-100 rounded shadow"
+                  >
+                    <ul class="p-3 space-y-3 text-sm text-gray-700">
+                      <li>
+                        <div class="flex items-center">
+                          <input
+                            id="enOption"
+                            type="radio"
+                            value="en"
+                            name="en"
+                            class="w-4 h-4 text-sky-600 bg-gray-100 border-gray-300 focus:ring-sky-500 dark:focus:ring-sky-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                          />
+                          <label
+                            for="enOption"
+                            class="ml-2 w-full text-sm font-medium text-gray-900"
+                            >EN</label
+                          >
+                        </div>
+                      </li>
+                      <li>
+                        <div class="flex items-center">
+                          <input
+                            id="viOption"
+                            type="radio"
+                            value="vi"
+                            name="vi"
+                            class="w-4 h-4 text-sky-600 bg-gray-100 border-gray-300 focus:ring-sky-500 dark:focus:ring-sky-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                          />
+                          <label
+                            for="viOption"
+                            class="ml-2 w-full text-sm font-medium text-gray-900"
+                            >VI</label
+                          >
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="setting-block">
+              <label class="font-bold">Github</label>
+              <div id="ghApiKey" class="mt-2">
+                <label>
+                  Personal API Token
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-block"
+                  >
+                    <svg
+                      class="w-[14px] h-[14px]"
+                      fill="none"
+                      stroke="#075985"
+                      stroke-width="1.5"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                      ></path>
+                    </svg>
+                  </a>
+                </label>
+                <p class="text-gray-500">
+                  (Please select scope <b>repo</b> for access to repositories)
+                </p>
+                <div
+                  class="mt-1 flex flex-row justify-between items-start gap-2 gap-y-2"
+                >
+                  <div class="w-3/4">
+                    <input
+                      name="ghApiKey"
+                      type="text"
+                      placeholder="Github API key"
+                      class="w-full p-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-500 focus:border-sky-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
+                    />
+                  </div>
+                  <div class="w-1/4">
+                    <button
+                      type="button"
+                      class="w-full py-1 px-4 block text-sm font-medium text-gray-900 focus:outline-none bg-white rounded border border-gray-200 hover:bg-gray-100 hover:text-sky-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    >
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="setting-block">
+              <label class="font-bold">Clickup</label>
+              <div id="cuApiKey" class="my-2">
+                <label>
+                  Personal API Token
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-block"
+                  >
+                    <svg
+                      class="w-[14px] h-[14px]"
+                      fill="none"
+                      stroke="#075985"
+                      stroke-width="1.5"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                      ></path>
+                    </svg>
+                  </a>
+                </label>
+                <div
+                  class="mt-1 flex flex-row justify-between items-start gap-2 gap-y-2"
+                >
+                  <div class="w-3/4">
+                    <input
+                      name="cuApiKey"
+                      type="text"
+                      placeholder="Clickup API key"
+                      class="w-full p-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-500 focus:border-sky-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
+                    />
+                  </div>
+                  <div class="w-1/4">
+                    <button
+                      type="button"
+                      class="w-full py-1 px-4 block text-sm font-medium text-gray-900 focus:outline-none bg-white rounded border border-gray-200 hover:bg-gray-100 hover:text-sky-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    >
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div id="workspaces" class="mt-4 flex-col hidden">
+                <label>Workspaces</label>
+                <div id="workspacesContent" class="flex flex-col"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script defer src="main.js"></script>
+  </body>
+</html>

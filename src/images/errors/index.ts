@@ -1,0 +1,1 @@
+export { default as Error403Img } from "../errors/403.svg";

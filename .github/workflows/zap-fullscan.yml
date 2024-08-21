@@ -1,0 +1,23 @@
+name: ZAP Full Scan
+
+on:
+  workflow_dispatch:
+    inputs:
+      target-url:
+        description: 'Target URL to scan'
+        required: true
+
+jobs:
+  zap-full-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run ZAP Full Scan
+        uses: zaproxy/action-full-scan@v0.4.0
+        with:
+          target: ${{ github.event.inputs.target-url }}
+
+      - name: Upload report
+        uses: actions/upload-artifact@v2
+        with:
+          name: zap-report
+          path: zap/wrk/*.html
